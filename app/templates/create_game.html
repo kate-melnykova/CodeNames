@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <p>Thanks for joining the game, {user.name}!</p>
+    <p> The game id is</p>
+    <p align="center"> {game.id}</p>
+    <p> Please send id to other players, so they can join.</p>
+    <p>
+    <form action="./create_game">
+        <input type="submit" name="start" value="Start game">
+        (will reload the page if not all players have been added)
+    </form>
+    </p>
+</div>
+{% endblock %}

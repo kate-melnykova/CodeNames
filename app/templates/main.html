@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Welcome to the CodeNames online! No login or registration required, but you need to list your name.
+<fieldset>
+    <form action="./setup" method="POST">
+        {{ form.csrf }}
+        <p>
+        <table>
+            <tr>
+                <td>{{ form.name.label }}</td>
+                <td>{{ form.name(class="css_class") }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.codemaster.label }}</td>
+                <td>{{ form.codemaster(class="css_class") }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.join.label }}</td>
+                <td>{{ form.join(class="css_class") }}</td>
+            </tr>
+    </table>
+         <input type="submit" name="start" value="start" />
+    </form>
+
+    </form>
+</fieldset>
+{% endblock %}
