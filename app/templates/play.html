@@ -1,34 +1,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if name == game.codemaster_red or name == game.codemaster_blue %}
-{% set codemaster = True %}
+{% if user.name == game.codemaster_red.name or user.name == game.codemaster_blue.name %}
+    {% set codemaster = True %}
 {% else %}
-{% set codemaster = False %}
+    {% set codemaster = False %}
 {% endif %}
 
 <div>
-    {% if name == game.codemaster_red or name in game.red_team %}
-    <p>You are in the red team! </p>
-    <p> Your codemaster is {{game.codemaster_red}}</p>
-    <p> Your team is {{**game.red_team}}</p>
-    {% else %}
-    <p>You are in the blue team!</p>
-    <p> Your codemaster is {{game.codemaster_blue}}</p>
-    <p> Your team is {{game.blue_team}}</p>
-    {% endif %}
-    </p>
-</div>
-<p></p>
+    <table>
+        <tr>
+            <td> Red team </td>
+            <td> Blue team</td>
+        </tr>
+        <tr>
+            <td>Codemaster {{game.codemaster_red.name}}</td>
+            <td>Codemaster {{game.codemaster_blue.name}}</td>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    {% for p in game.get_all_players() %}
+                        {% if (p.team == 'r') and not p.codemaster %}
+                            <li>
+                                {{p.name}}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for p in game.get_all_players() %}
+                        {% if (p.team == 'b') and not p.codemaster %}
+                            <li>
+                                {{p.name}}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+
 <div>
 <table>
-    {% for row in game.board %}
     <tr>
-        {% for col in game.board %}
-        <td> {{self.board[row][col]}} </td>
-        {% endfor %}
-    </tr>
+    {% for i in range(25) %}
+        {% set card_id = game.cards_selected[i] %}
+        {% set filename = "media/pic" +  card_id | string  + ".png" %}
+        {% set link = url_for('static', filename=filename) %}
+        {% if (i > 0) and (i % 5 == 0) %}
+            </tr><tr>
+        {% endif %}
+        <td> {% if i in game.revealed %}
+            revealed
+            {% else %}
+                <img src="{{link}}" width="100">
+            {% endif %}
+        </td>
     {% endfor %}
+    </tr>
 </table>
 </div>
 {% endblock %}

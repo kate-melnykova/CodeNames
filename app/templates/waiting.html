@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block jsfile %}
+{% endblock %}
+
+{% block content %}
+<div>
+    <p>Thanks for joining the game, {{name}}!</p>
+    <p> The game id is</p>
+    <p align="center"> {{game.id}}</p>
+    <p> Please send id to other players, so they can join.</p>
+</div>
+<div>
+    <p> Currently in the game:</p>
+    {% for user in game.get_all_players() %}
+        {{user.name}} {% if not loop.last %}, {% endif %}
+    {% endfor %}
+</div>
+<div>
+    {% if game.get_all_players() | length >= 4 %}
+    <form>
+        <input type="submit" name="start" value="start">
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

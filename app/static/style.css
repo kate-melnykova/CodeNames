@@ -1,4 +1,48 @@
 .borderstyle {
- border-style:solid;
+ border-style: solid;
  border-color:#287EC7;
+
+}
+
+.topnav {
+    width: 100%;
+    border: 0px;
+    background-color: #38b6ff;
+}
+
+table{
+  border: 0px;
+  background-color: #cce6ff;
+  border-spacing: 0px;
+  align: center;
+  width: 100%;
+}
+
+tr, td{
+ text-align: center;
+ }
+
+fieldset{
+  margin-left: 2px;
+  margin-right: 2px;
+  display: inline-block;
+}
+
+
+a:link { color: white;}
+a:visited { color: white;}
+a:hover { color:#cce6ff;}
+a:active { color:#e6f2ff;}
+
+div {
+ border-style: solid;
+ background-color: #cce6ff;
+ border-color: grey;
+ align:center;
+}
+
+body {
+  background-color: #e6f2ff;
+  margin-left: 10%;
+  margin-right: 10%;
 }
