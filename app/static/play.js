@@ -2,6 +2,9 @@ $(document).ready(function(){
     loadState();
 });
 
+window.refresh = function(data){
+    window.location.href = data.url;
+}
 
 function loadState() {
     window.setTimeout(function(){
@@ -10,8 +13,8 @@ function loadState() {
             method: 'GET',
             dataType: 'json',
             success: function(event){
-                # manipulate elements
-                loadState();
+                    window['refresh'](event);
+                    loadState();
             }
         });
     }, 2000);

@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab1b00aa-cbfe-4d1f-adfa-9aef38bebe97" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/static/play.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/waiting.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/events.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/events.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/play.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/play.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/play.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/waiting.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/waiting.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,14 +44,61 @@
       <recent name="$PROJECT_DIR$/app/static" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CodeNames" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/models/models.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.models" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="WindowStateProjectService">
     <state x="618" y="328" width="741" height="456" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586404843252">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
     <state x="618" y="328" width="741" height="456" key="#com.intellij.fileTypes.FileTypeChooser/67.34.1853.1046@67.34.1853.1046" timestamp="1586404843252" />
+    <state width="1822" height="264" key="GridCell.Tab.0.bottom" timestamp="1586498918780">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1822" height="264" key="GridCell.Tab.0.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1586498918780" />
+    <state width="1822" height="264" key="GridCell.Tab.0.center" timestamp="1586498918779">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1822" height="264" key="GridCell.Tab.0.center/67.34.1853.1046@67.34.1853.1046" timestamp="1586498918779" />
+    <state width="1822" height="264" key="GridCell.Tab.0.left" timestamp="1586498918779">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1822" height="264" key="GridCell.Tab.0.left/67.34.1853.1046@67.34.1853.1046" timestamp="1586498918779" />
+    <state width="1822" height="264" key="GridCell.Tab.0.right" timestamp="1586498918779">
+      <screen x="67" y="34" width="1853" height="1046" />
+    </state>
+    <state width="1822" height="264" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1586498918779" />
     <state x="250" y="34" width="1476" height="1046" key="SettingsEditor" timestamp="1586151653344">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>

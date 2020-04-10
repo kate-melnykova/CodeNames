@@ -161,9 +161,22 @@ def long_polling():
     player = get_user(game)
     while True:
         event = Event.get(game.id, player.name)
-        if event:
+        if event is not None:
+            event['url'] = url_for('main')
+            print(f'Event {event} is requested by {player.name}')
             return jsonify(event)
         time.sleep(1)
+
+
+@app.route('/select', methods=['POST'])
+def select():
+    # get a name of the pic
+    card_idx = int(next(request.form.keys()).rstrip('.x'))
+    game = get_game()
+    game.revealed.append(card_idx)
+    Event(card_idx, game.id)
+    game.save()
+    return redirect(url_for('play'))
 
 
 

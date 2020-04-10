@@ -36,9 +36,7 @@ a:hover { color:#cce6ff;}
 a:active { color:#e6f2ff;}
 
 div {
- border-style: solid;
  background-color: white;
- border-color: grey;
  align:center;
 }
 
@@ -50,7 +48,7 @@ body {
 
 .column {
   float: left;
-  width: 33%;
+  width: 30%;
 }
 
 /* Clear floats after the columns */

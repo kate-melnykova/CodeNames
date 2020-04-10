@@ -119,7 +119,10 @@ class Game:
         for player in self.get_all_players():
             if player.name == name:
                 return player
-
+        if self.codemaster_red.name == name:
+            return self.codemaster_red
+        if self.codemaster_blue.name == name:
+            return self.codemaster_blue
         return None
 
     def get_all_players(self) -> List['User']:

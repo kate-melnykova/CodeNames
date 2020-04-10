@@ -1,4 +1,5 @@
 from typing import List
+import json
 
 from models.db import db
 from models.models import Game
@@ -19,8 +20,10 @@ class Event:
             data = db.load(key)
             if data is None:
                 data = list()
+            else:
+                data = json.loads(data)
             data.append(event)
-            db.save(key, data)
+            db.save(key, json.dumps(data))
 
     @classmethod
     def get(cls, game_id: str, name: str) -> List['Event']:
@@ -34,6 +37,6 @@ class Event:
         data = db.load(key)
         if data is not None:
             db.delete(key)
-            return data
+            return {'data': json.loads(data)}
         else:
-            return list()
+            return None

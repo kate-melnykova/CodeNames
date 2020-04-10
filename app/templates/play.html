@@ -1,86 +1,80 @@
 {% extends 'base.html' %}
 
+{% block jsfile %}
+<script src="{{url_for('static', filename='play.js')}}"></script>
+{% endblock %}
+
 {% block content %}
-<p>
-    <p>
-        <table style="width:250px; border: 1px solid grey;">
+<div class="row">
+  <div class="column">
+      <p align="center">
+          <strong>Red team</strong>
+          <br>
+          Codemaster {{game.codemaster_red.name}} <br>
+            <ul>
+                {% for p in game.get_all_players() %}
+                    {% if (p.team == 'red') and not p.codemaster %}
+                        <li>
+                            {{p.name}}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+      </p>
+  </div>
+  <div class="column">
+      <p>
+        <table align="center" style="width:125px; border: 1px solid grey;">
             {% for colors in game.coloring | batch(5) %}
                 <tr>
                     {% for c in colors %}
-                        <td style="background-color:{{c}}; height: 50px;"></td>
+                        <td style="background-color:{{c}}; height: 25px;"></td>
                     {% endfor %}
                 </tr>
             {% endfor %}
         </table>
     </p>
-    <br>
-    <table>
-        <tr>
-            <td> Red team </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td> Blue team</td>
-        </tr>
-        <tr>
-            <td>Codemaster {{game.codemaster_red.name}}
-                <br>
-                <ul>
-                    {% for p in game.get_all_players() %}
-                        {% if (p.team == 'red') and not p.codemaster %}
-                            <li>
-                                {{p.name}}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Codemaster {{game.codemaster_blue.name}}</td>
-        </tr>
-        <tr>
-            <td>
-                <ul>
-                    {% for p in game.get_all_players() %}
-                        {% if (p.team == 'red') and not p.codemaster %}
-                            <li>
-                                {{p.name}}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <ul>
-                    {% for p in game.get_all_players() %}
-                        {% if (p.team == 'blue') and not p.codemaster %}
-                            <li>
-                                {{p.name}}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </td>
-        </tr>
+  </div>
+    <div class="column">
+        <p align="center">
+            <strong> Blue team </strong> <br>
+            Codemaster {{game.codemaster_blue.name}}
+            <ul>
+                {% for p in game.get_all_players() %}
+                    {% if (p.team == 'blue') and not p.codemaster %}
+                        <li>
+                            {{p.name}}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </p>
+    </div>
+</div>
+
+<div>
+<p align="center">
+    <form method="POST" action="/select">
+    <fieldset>
+    <table align="center" style="width:100%">
     {% for row in game.cards_selected | batch(5) %}
+        {% set rowloop = (loop.index - 1) * 5 %}
         <tr>
             {% for filename in row %}
-            {% if loop.index in game.revealed %}
-                <td style="background-color:{{game.coloring[loop.index]}}">
+            {% set idx = rowloop + loop.index - 1 %}
+            {% if idx in game.revealed %}
+                <td style="background-color:{{game.coloring[idx]}}; width:150px; height:150px;">
                 </td>
-                {% else %}
-                    <td>
-                        <img src="{{url_for('static', filename=filename)}}" width="100">
-                    </td>
-                {% endif %}
+            {% else %}
+                <td>
+                    <input type="image" name="{{rowloop + loop.index - 1}}" class="select" src="{{url_for('static', filename=filename)}}" width="150px" onclick="return confirm('Are you sure?')">
+                </td>
+            {% endif %}
             {% endfor %}
         </tr>
     {% endfor %}
-</table>
+    </table>
+    </fieldset>
+</form>
 </div>
 {% endblock %}
