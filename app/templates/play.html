@@ -1,27 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if user.name == game.codemaster_red.name or user.name == game.codemaster_blue.name %}
-    {% set codemaster = True %}
-{% else %}
-    {% set codemaster = False %}
-{% endif %}
-
-<div>
+<p>
+    <p>
+        <table style="width:250px; border: 1px solid grey;">
+            {% for colors in game.coloring | batch(5) %}
+                <tr>
+                    {% for c in colors %}
+                        <td style="background-color:{{c}}; height: 50px;"></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </p>
+    <br>
     <table>
         <tr>
             <td> Red team </td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td> Blue team</td>
         </tr>
         <tr>
-            <td>Codemaster {{game.codemaster_red.name}}</td>
+            <td>Codemaster {{game.codemaster_red.name}}
+                <br>
+                <ul>
+                    {% for p in game.get_all_players() %}
+                        {% if (p.team == 'red') and not p.codemaster %}
+                            <li>
+                                {{p.name}}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>Codemaster {{game.codemaster_blue.name}}</td>
         </tr>
         <tr>
             <td>
                 <ul>
                     {% for p in game.get_all_players() %}
-                        {% if (p.team == 'r') and not p.codemaster %}
+                        {% if (p.team == 'red') and not p.codemaster %}
                             <li>
                                 {{p.name}}
                             </li>
@@ -29,10 +52,13 @@
                     {% endfor %}
                 </ul>
             </td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
                 <ul>
                     {% for p in game.get_all_players() %}
-                        {% if (p.team == 'b') and not p.codemaster %}
+                        {% if (p.team == 'blue') and not p.codemaster %}
                             <li>
                                 {{p.name}}
                             </li>
@@ -41,25 +67,20 @@
                 </ul>
             </td>
         </tr>
-
-<div>
-<table>
-    <tr>
-    {% for i in range(25) %}
-        {% set card_id = game.cards_selected[i] %}
-        {% set filename = "media/pic" +  card_id | string  + ".png" %}
-        {% set link = url_for('static', filename=filename) %}
-        {% if (i > 0) and (i % 5 == 0) %}
-            </tr><tr>
-        {% endif %}
-        <td> {% if i in game.revealed %}
-            revealed
-            {% else %}
-                <img src="{{link}}" width="100">
-            {% endif %}
-        </td>
+    {% for row in game.cards_selected | batch(5) %}
+        <tr>
+            {% for filename in row %}
+            {% if loop.index in game.revealed %}
+                <td style="background-color:{{game.coloring[loop.index]}}">
+                </td>
+                {% else %}
+                    <td>
+                        <img src="{{url_for('static', filename=filename)}}" width="100">
+                    </td>
+                {% endif %}
+            {% endfor %}
+        </tr>
     {% endfor %}
-    </tr>
 </table>
 </div>
 {% endblock %}

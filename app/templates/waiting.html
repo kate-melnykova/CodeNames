@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block jsfile %}
+<script src="{{url_for('static', filename='waiting.js')}}"></script>
 {% endblock %}
 
 {% block content %}
@@ -11,12 +12,14 @@
     <p> Please send id to other players, so they can join.</p>
 </div>
 <div>
-    <p> Currently in the game:</p>
+    <p id="user_list">
+        Currently in the game:
     {% for user in game.get_all_players() %}
         {{user.name}} {% if not loop.last %}, {% endif %}
     {% endfor %}
+    </p>
 </div>
-<div>
+<div id="start_button">
     {% if game.get_all_players() | length >= 4 %}
     <form>
         <input type="submit" name="start" value="start">

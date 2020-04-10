@@ -19,6 +19,7 @@ table{
 }
 
 tr, td{
+ border: 1px solid grey;
  text-align: center;
  }
 
@@ -36,7 +37,7 @@ a:active { color:#e6f2ff;}
 
 div {
  border-style: solid;
- background-color: #cce6ff;
+ background-color: white;
  border-color: grey;
  align:center;
 }
@@ -45,4 +46,16 @@ body {
   background-color: #e6f2ff;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+.column {
+  float: left;
+  width: 33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

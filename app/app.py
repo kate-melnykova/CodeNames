@@ -82,7 +82,7 @@ def waiting():
                 i = randint(0, len(all_players) - 1)
                 game.codemaster_red = all_players.pop(i)
             game.codemaster_red.codemaster = True
-            game.codemaster_red.team = 'r'
+            game.codemaster_red.team = 'red'
             print(f'Codemaster red is {game.codemaster_red.name}')
 
             # select codemaster blue
@@ -94,17 +94,17 @@ def waiting():
                 i = randint(0, len(all_players) - 1)
                 game.codemaster_blue = all_players.pop(i)
             game.codemaster_blue.codemaster = True
-            game.codemaster_blue.team = 'b'
+            game.codemaster_blue.team = 'blue'
             print(f'Codemaster blue is {game.codemaster_blue.name}')
 
             shuffle(all_players)
             length = len(all_players)
             i = 0
             while i < length:
-                all_players[i].team = 'r' if i < length // 2 else 'b'
+                all_players[i].team = 'red' if i < length // 2 else 'blue'
                 i += 1
 
-            game.all_players = all_players
+            game._all_players = all_players
             game.state = 'play'
             game.save()
             return redirect(url_for('play'))
@@ -114,11 +114,14 @@ def waiting():
     # request.method = 'POST'
     if game is None:
         url = url_for('main')
-    elif game.state > -1:
+        users = []
+    elif game.state == 'play':
         url = url_for('play')
+        users = []
     else:
         url = None
-    return jsonify({'url': url})
+        users = [p.name for p in game.get_all_players()]
+    return jsonify({'url': url, 'users': users})
 
 """
 @app.route('/play', methods=['POST'])

@@ -46,28 +46,29 @@ class Game:
             idx = randint(1, 278)
             if idx not in cards_selected:
                 cards_selected.append(idx)
+        cards_selected = [f"media/pic{idx}.png" for idx in cards_selected]
 
         start_color = randint(0, 1)
         if start_color:
-            turn = 'b'
+            turn = 'blue'
             n_red = cls.n_red
             n_blue = cls.n_blue + 1
         else:
-            turn = 'r'
+            turn = 'red'
             n_red = cls.n_red + 1
             n_blue = cls.n_blue
 
-        coloring = ['w'] * cls.n_entries
-        coloring[randint(0, cls.n_entries - 1)] = 'b'
+        coloring = ['beige'] * cls.n_entries
+        coloring[randint(0, cls.n_entries - 1)] = 'black'
         while n_red > 0:
             idx = randint(0, cls.n_entries - 1)
-            if coloring[idx] == 'w':
-                coloring[idx] = 'r'
+            if coloring[idx] == 'beige':
+                coloring[idx] = 'red'
                 n_red -= 1
         while n_blue > 0:
             idx = randint(0, cls.n_entries - 1)
-            if coloring[idx] == 'w':
-                coloring[idx] = 'b'
+            if coloring[idx] == 'beige':
+                coloring[idx] = 'blue'
                 n_blue -= 1
 
         self = cls(
@@ -127,4 +128,5 @@ class Game:
     def add_player(self, name: str, wants_codemaster: bool):
         user = User(name, wants_codemaster=wants_codemaster)
         self._all_players.append(user)
+
 
