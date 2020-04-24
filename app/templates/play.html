@@ -24,6 +24,7 @@
   </div>
   <div class="column">
       <p>
+      {% if user.codemaster %}
         <table align="center" style="width:125px; border: 1px solid grey;">
             {% for colors in game.coloring | batch(5) %}
                 <tr>
@@ -33,6 +34,7 @@
                 </tr>
             {% endfor %}
         </table>
+      {% endif %}
     </p>
   </div>
     <div class="column">

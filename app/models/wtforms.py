@@ -17,10 +17,10 @@ def no_special_symbols(form, field):
 
 
 class CreateGameForm(Form):
-    name = StringField('Enter your name*:', [validators.DataRequired,
-                                validators.Length(min=1, max=15),
-                                no_special_symbols,
-                                ])
+    name = StringField('Enter your name*:', [validators.DataRequired(),
+                                             validators.Length(min=1, max=15),
+                                             no_special_symbols,
+                                             ])
     codemaster = BooleanField('I want to be a codemaster (program selects randomly)')
     join = StringField('If you want to join the game, please enter 4-char code')
 

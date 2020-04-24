@@ -159,6 +159,7 @@ def long_polling():
         return redirect(url_for('main'))
 
     player = get_user(game)
+    print(f'Event is requested by {player.name}')
     while True:
         event = Event.get(game.id, player.name)
         if event is not None:
