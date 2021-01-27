@@ -10,7 +10,7 @@ This game does not belong to me, and I am not its creator.
 The true owner of the game is Rikki Tahta. Please support the game
 game developer by buying the original game.
 
-![Amazon](https://www.amazon.com/Indie-Boards-and-Cards-COU1IBC/dp/B00GDI4HX4 "Amazon")
+[Amazon](https://www.amazon.com/Indie-Boards-and-Cards-COU1IBC/dp/B00GDI4HX4 "Amazon")
 
 ***
 
