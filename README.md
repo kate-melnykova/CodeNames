@@ -1,16 +1,16 @@
 ## Game of Coup
 During quarantine, in-person meetings are discouraged.
 
-Sadly, it includes board games.
+Sadly, it includes board games parties.
 
 As a solution, this repository contains online version
-of a the Game of Coup.
+of the Codenames.
 
 This game does not belong to me, and I am not its creator.
-The true owner of the game is Rikki Tahta. Please support the game
+The true owner of the game is Vlaada Chvatil. Please support the game
 game developer by buying the original game.
 
-[Amazon](https://www.amazon.com/Indie-Boards-and-Cards-COU1IBC/dp/B00GDI4HX4 "Amazon")
+[Amazon](https://www.amazon.com/Czech-Games-00031CGE-Codenames/dp/B014Q1XX9S "Amazon")
 
 ***
 
